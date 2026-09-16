@@ -3,153 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadoras — Praia Digital</title>
-<meta name="description" content="Calculadoras práticas para investimento e temporada no litoral paulista: rental yield, Airbnb vs aluguel anual e custo real da compra.">
-<link rel="canonical" href="https://praia.digital/calculadoras/">
-<meta name="robots" content="index, follow">
-<link rel="preconnect" href="https://praia.digital">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://praia.digital/index.html" },
-    { "@type": "ListItem", "position": 2, "name": "Calculadoras", "item": "https://praia.digital/calculadoras/" }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "As calculadoras substituem uma análise profissional?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Elas servem para simulações rápidas e apoio à decisão." } },
-    { "@type": "Question", "name": "Os valores são atualizados?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, sempre que houver nova base de dados de mercado." } }
-  ]
-}
-</script>
+<title>Central de Calculadoras Imobiliárias — Praia Digital</title>
+<meta name="description" content="Financiamento Price, consórcio e ROI de temporada em um só lugar.">
 <style>
-  :root { font-family: Inter, system-ui, sans-serif; }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: #0b1220; color: #e8ecf1; }
-  .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 22px; }
-  h1 { font-size: 22px; margin: 0 0 6px; }
-  p.lead { margin: 0 0 22px; opacity: .8; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-  .card { background: #121c2e; border: 1px solid #243348; border-radius: 14px; padding: 18px; }
-  .card h2 { margin: 0 0 8px; font-size: 17px; }
-  .card p { margin: 0 0 12px; opacity: .75; font-size: 14px; }
-  .btn { display: inline-block; padding: 9px 12px; border-radius: 10px; background: #1f6feb; color: #fff; text-decoration: none; font-weight: 600; font-size: 13px; }
-  input { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #243348; background: #0b1220; color: #e8ecf1; }
-  .result { margin-top: 10px; padding: 10px; border-radius: 10px; background: #0f172a; border: 1px solid #243348; }
-  footer { margin-top: 22px; opacity: .6; font-size: 12px; }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif}
+  body{background:#f0f9ff;color:#0f172a;min-height:100vh}
+  header{background:linear-gradient(135deg,#0077B6,#00B4D8);color:#fff;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+  header a{color:#fff;text-decoration:none;font-weight:700}
+  .logo{font-size:1.2rem}
+  main{max-width:760px;margin:2rem auto;padding:0 1rem}
+  .tabs{display:flex;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap}
+  .tab{flex:1;min-width:150px;padding:.8rem;border:1px solid #cbd5e1;background:#fff;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9rem}
+  .tab.active{background:linear-gradient(135deg,#0077B6,#00B4D8);color:#fff;border-color:transparent}
+  .card{background:#fff;border-radius:16px;padding:1.75rem;box-shadow:0 4px 24px rgba(0,60,100,.08)}
+  .panel{display:none}.panel.active{display:block}
+  h1{font-size:1.5rem;color:#0077B6;margin-bottom:1rem}
+  label{display:block;font-weight:600;font-size:.85rem;margin:.9rem 0 .3rem}
+  input{width:100%;padding:.7rem;border:1px solid #cbd5e1;border-radius:10px;font-size:1rem}
+  button.calc{width:100%;margin-top:1.3rem;padding:.9rem;border:0;border-radius:12px;background:#0077B6;color:#fff;font-weight:800;font-size:1rem;cursor:pointer}
+  .out{margin-top:1.2rem;background:#ecfeff;border:1px solid #67e8f9;border-radius:12px;padding:1rem;font-size:1rem;display:none}
+  .out b{color:#0369a1}
+  footer{background:#023047;color:#cbd5e1;padding:2rem 1.5rem;margin-top:3rem}
+  footer h4{color:#fff;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.8rem}
+  .links{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem}
+  .links a{color:#90E0EF;text-decoration:none;font-size:.85rem}
 </style>
 </head>
 <body>
-<nav style="background:#0a2540;padding:14px 20px;font-family:system-ui,sans-serif">
-  <span style="color:#fff;font-weight:700;margin-right:16px">🌊 Praia Digital</span>
-  <a href="https://praia.digital" style="color:#9fd8ff;margin-right:12px">Site principal</a>
-  <a href="https://praia.digital/apps/" style="color:#9fd8ff;margin-right:12px">Todos os apps</a>
-  <a href="https://praia.digital/simulador-roi/" style="color:#9fd8ff;margin-right:12px">Simulador ROI</a>
-  <a href="https://praia.digital/simulador-credito/" style="color:#9fd8ff;margin-right:12px">Simulador Crédito</a>
-  <a href="https://praia.digital/checklists/" style="color:#9fd8ff;margin-right:12px">Checklists</a>
-  <a href="https://praia.digital/ferramentas-gratuitas/" style="color:#9fd8ff;margin-right:12px">Ferramentas</a>
-  <a href="https://praia.digital/eventos-litoral/" style="color:#9fd8ff;margin-right:12px">Eventos</a>
-  <a href="https://praia.digital/guia-litoral/" style="color:#9fd8ff;margin-right:12px">Guia do Litoral</a>
-  <a href="https://praia.digital/blog-litoral/" style="color:#9fd8ff;margin-right:12px">Blog</a>
-  <a href="https://praia.digital/area-anfitriao/" style="color:#9fd8ff;margin-right:12px">Área do Anfitrião</a>
-  <a href="https://praia.digital/hermes-agents/" style="color:#9fd8ff">Hermes Agents</a>
-</nav>
-
-<div class="wrap">
-  <h1>Calculadoras</h1>
-  <p class="lead">Simulações rápidas para decisões de investimento, temporada e compra no litoral.</p>
-
-  <div class="grid">
-    <article class="card">
-      <h2>Rental Yield</h2>
-      <p>Estime o yield anual de um imóvel para temporada.</p>
-      <label>Valor do imóvel (R$)</label>
-      <input id="ry_price" type="number" value="500000">
-      <label>Diária média (R$)</label>
-      <input id="ry_daily" type="number" value="350">
-      <label>Ocupação anual (%)</label>
-      <input id="ry_occ" type="number" value="55">
-      <label>Custos operacionais (%)</label>
-      <input id="ry_costs" type="number" value="22">
-      <button class="btn" onclick="calcRentalYield()">Calcular</button>
-      <div id="ry_result" class="result"></div>
-    </article>
-
-    <article class="card">
-      <h2>Airbnb vs Aluguel Anual</h2>
-      <p>Compare margem líquida entre temporada e locação fixa.</p>
-      <label>Diária média (R$)</label>
-      <input id="ab_daily" type="number" value="350">
-      <label>Ocupação anual (%)</label>
-      <input id="ab_occ" type="number" value="55">
-      <label>Aluguel anual (R$)</label>
-      <input id="ab_annual" type="number" value="48000">
-      <label>Custos operacionais (%)</label>
-      <input id="ab_costs" type="number" value="22">
-      <button class="btn" onclick="calcAirbnb()">Calcular</button>
-      <div id="ab_result" class="result"></div>
-    </article>
-
-    <article class="card">
-      <h2>Custo Real da Compra</h2>
-      <p>Inclua impostos e taxas para entender o custo total.</p>
-      <label>Valor do imóvel (R$)</label>
-      <input id="cc_price" type="number" value="500000">
-      <label>ITBI (%)</label>
-      <input id="cc_itbi" type="number" value="3">
-      <label>Registro e escritura (R$)</label>
-      <input id="cc_reg" type="number" value="8000">
-      <label>Outras taxas (R$)</label>
-      <input id="cc_other" type="number" value="4000">
-      <button class="btn" onclick="calcCustoReal()">Calcular</button>
-      <div id="cc_result" class="result"></div>
-    </article>
+<header>
+  <a class="logo" href="https://praia.digital/">🏖️ Praia Digital</a>
+  <a href="https://praia.digital/apps">← Todos os apps</a>
+</header>
+<main>
+  <div class="tabs">
+    <button class="tab active" onclick="show(0,this)">🏦 Financiamento</button>
+    <button class="tab" onclick="show(1,this)">🤝 Consórcio</button>
+    <button class="tab" onclick="show(2,this)">📈 ROI Temporada</button>
   </div>
-
-  <div style="margin-top:1.5rem">
-    <a class="btn" href="https://praia.digital/blog-litoral/">Ir para o Blog do Litoral</a>
-    <a class="btn" href="https://praia.digital/simulador-roi/">Simulador de ROI</a>
-    <a class="btn" href="https://praia.digital/simulador-credito/">Simulador de Crédito</a>
+  <div class="card">
+    <div class="panel active">
+      <h1>Financiamento (Tabela Price)</h1>
+      <label>Valor do imóvel (R$)</label><input type="number" id="fValor" value="500000">
+      <label>Entrada (R$)</label><input type="number" id="fEntrada" value="100000">
+      <label>Taxa de juros anual (%)</label><input type="number" id="fTaxa" value="10.5" step="0.1">
+      <label>Prazo (anos)</label><input type="number" id="fPrazo" value="30">
+      <button class="calc" onclick="fin()">Calcular parcela</button>
+      <div class="out" id="fOut"></div>
+    </div>
+    <div class="panel">
+      <h1>Consórcio Imobiliário</h1>
+      <label>Crédito desejado (R$)</label><input type="number" id="cValor" value="400000">
+      <label>Prazo (meses)</label><input type="number" id="cPrazo" value="180">
+      <label>Taxa de administração total (%)</label><input type="number" id="cAdm" value="18" step="0.5">
+      <button class="calc" onclick="cons()">Calcular parcela</button>
+      <div class="out" id="cOut"></div>
+    </div>
+    <div class="panel">
+      <h1>ROI de Aluguel de Temporada</h1>
+      <label>Valor do imóvel (R$)</label><input type="number" id="rValor" value="500000">
+      <label>Diária média (R$)</label><input type="number" id="rDiaria" value="450">
+      <label>Ocupação anual (%)</label><input type="number" id="rOc" value="55">
+      <label>Custos anuais — condomínio, IPTU, manutenção (R$)</label><input type="number" id="rCustos" value="18000">
+      <button class="calc" onclick="roi()">Calcular retorno</button>
+      <div class="out" id="rOut"></div>
+    </div>
   </div>
-
-  <footer>Praia Digital — conteúdo informativo, não constitui aconselhamento financeiro.</footer>
-</div>
-
+</main>
+<footer>
+  <h4>Rede de apps Praia Digital</h4>
+  <div class="links">
+    <a href="https://praia.digital/avaliador-imoveis">Avaliador IA</a>
+    <a href="https://praia.digital/calculadora-custos">Custos de Compra</a>
+    <a href="https://praia.digital/simulador-credito">Simulador Crédito</a>
+    <a href="https://praia.digital/simulador-roi">Simulador ROI</a>
+    <a href="https://praia.digital/ferramentas">Kit do Anfitrião</a>
+    <a href="https://praia.digital/gerador-descricoes">Gerador de Descrições</a>
+    <a href="https://praia.digital/portal-corretores">Portal do Corretor</a>
+    <a href="https://praia.digital/guia-litoral">Guia do Litoral</a>
+    <a href="https://praia.digital/blog-litoral">Blog</a>
+  </div>
+</footer>
 <script>
-function fmtBRL(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}
-function calcRentalYield(){
-  const price=Number(document.getElementById('ry_price').value)||0;
-  const daily=Number(document.getElementById('ry_daily').value)||0;
-  const occ=Number(document.getElementById('ry_occ').value)||0;
-  const costs=Number(document.getElementById('ry_costs').value)||0;
-  const gross=daily*365*(occ/100);
-  const net=gross*(1-costs/100);
-  const y=price? (net/price)*100 : 0;
-  document.getElementById('ry_result').innerHTML='Receita bruta: '+fmtBRL(gross)+'<br>Receita líquida: '+fmtBRL(net)+'<br>Yield: '+y.toFixed(2)+'% a.a.';
+var fmt=function(n){return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0})};
+var num=function(id){return parseFloat(document.getElementById(id).value)||0};
+function show(i,btn){
+  document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i)});
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+  btn.classList.add('active');
 }
-function calcAirbnb(){
-  const daily=Number(document.getElementById('ab_daily').value)||0;
-  const occ=Number(document.getElementById('ab_occ').value)||0;
-  const annual=Number(document.getElementById('ab_annual').value)||0;
-  const costs=Number(document.getElementById('ab_costs').value)||0;
-  const gross=daily*365*(occ/100);
-  const netTemporada=gross*(1-costs/100);
-  const diff=netTemporada-annual;
-  document.getElementById('ab_result').innerHTML='Temporada líquida: '+fmtBRL(netTemporada)+'<br>Anual: '+fmtBRL(annual)+'<br>Diferença: '+fmtBRL(diff);
+function fin(){
+  var P=num('fValor')-num('fEntrada'), i=num('fTaxa')/100/12, n=num('fPrazo')*12;
+  var par=P*i/(1-Math.pow(1+i,-n));
+  var e=document.getElementById('fOut');
+  e.innerHTML='Parcela: <b>'+fmt(par)+'</b>/mês<br>Total pago: '+fmt(par*n)+' · Juros: '+fmt(par*n-P)+'<br>Renda mínima sugerida (30%): <b>'+fmt(par/0.3)+'</b>';
+  e.style.display='block';
 }
-function calcCustoReal(){
-  const price=Number(document.getElementById('cc_price').value)||0;
-  const itbi=Number(document.getElementById('cc_itbi').value)||0;
-  const reg=Number(document.getElementById('cc_reg').value)||0;
-  const other=Number(document.getElementById('cc_other').value)||0;
-  const total=price+price*(itbi/100)+reg+other;
-  document.getElementById('cc_result').innerHTML='Custo total estimado: '+fmtBRL(total);
+function cons(){
+  var v=num('cValor'), n=num('cPrazo'), adm=num('cAdm')/100;
+  var par=(v*(1+adm))/n;
+  var e=document.getElementById('cOut');
+  e.innerHTML='Parcela estimada: <b>'+fmt(par)+'</b>/mês<br>Custo total: '+fmt(v*(1+adm))+' (adm. '+fmt(v*adm)+')<br>Sem juros de financiamento — ideal para planejar a compra.';
+  e.style.display='block';
+}
+function roi(){
+  var v=num('rValor'), receita=num('rDiaria')*365*num('rOc')/100, liquida=receita-num('rCustos');
+  var pct=liquida/v*100;
+  var e=document.getElementById('rOut');
+  e.innerHTML='Receita bruta anual: '+fmt(receita)+'<br>Receita líquida: <b>'+fmt(liquida)+'</b><br>ROI anual: <b>'+pct.toFixed(1)+'%</b> · Payback: ~'+(v/liquida).toFixed(1)+' anos';
+  e.style.display='block';
 }
 </script>
 </body>
