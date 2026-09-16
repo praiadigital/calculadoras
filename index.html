@@ -47,6 +47,20 @@
 </style>
 </head>
 <body>
+<nav style="background:#0c4a6e;padding:12px 20px;display:flex;gap:16px;flex-wrap:wrap;font-family:system-ui,sans-serif">
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praia.digital/">🌊 Praia Digital</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/apps/">Hub de Apps</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/hermes-agents/">Hermes Agents</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/area-anfitriao/">Área do Anfitrião</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/simulador-roi/">Simulador ROI</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/simulador-credito/">Simulador Crédito</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/guia-litoral/">Guia do Litoral</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/blog-litoral/">Blog Litoral</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/calculadoras/">Calculadoras</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/newsletter-litoral/">Newsletter</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/eventos-litoral/">Eventos</a>
+</nav>
+
 <div class="wrap">
   <h1>Calculadoras</h1>
   <p class="lead">Simulações rápidas para decisões de investimento, temporada e compra no litoral.</p>
@@ -99,7 +113,9 @@
   </div>
 
   <div style="margin-top:1.5rem">
-    <a class="btn" href="https://praiadigital.github.io/blog-litoral/">Ver o Blog do Litoral</a>
+    <a class="btn" href="https://praiadigital.github.io/blog-litoral/">Voltar para o Blog</a>
+    <a class="btn" href="https://praiadigital.github.io/simulador-roi/">Simulador ROI</a>
+    <a class="btn" href="https://praiadigital.github.io/simulador-credito/">Simulador de Crédito</a>
   </div>
 
   <footer>Praia Digital — conteúdo informativo, não constitui aconselhamento financeiro.</footer>
@@ -114,8 +130,8 @@ function calcRentalYield(){
   const costs=Number(document.getElementById('ry_costs').value)||0;
   const gross=daily*365*(occ/100);
   const net=gross*(1-costs/100);
-  const y=price? (net/price)*100 : 0;
-  document.getElementById('ry_result').innerHTML=`Receita bruta: ${fmtBRL(gross)}<br>Receita líquida: ${fmtBRL(net)}<br>Yield: ${y.toFixed(2)}% a.a.`;
+  const yld=price? (net/price)*100 : 0;
+  document.getElementById('ry_result').innerHTML=`Receita bruta: ${fmtBRL(gross)}<br>Receita líquida: ${fmtBRL(net)}<br>Yield: ${yld.toFixed(2)}% a.a.`;
 }
 function calcAirbnb(){
   const daily=Number(document.getElementById('ab_daily').value)||0;
@@ -136,21 +152,5 @@ function calcCustoReal(){
   document.getElementById('cc_result').innerHTML=`Custo total estimado: ${fmtBRL(total)}`;
 }
 </script>
-
-<hr style="margin:40px 0 20px;border:none;border-top:1px solid #e2e8f0">
-<nav style="font-family:system-ui,sans-serif;font-size:.95em;text-align:center;padding:0 16px 32px;color:#475569">
-<strong>Rede Praia Digital:</strong><br>
-<a href="https://praia.digital/">Praia Digital</a> ·
-<a href="https://praiadigital.github.io/apps/">Todos os apps</a> ·
-<a href="https://praiadigital.github.io/ferramentas/">Ferramentas</a> ·
-<a href="https://praiadigital.github.io/calculadoras/">Calculadoras</a> ·
-<a href="https://praiadigital.github.io/simulador-roi/">Simulador ROI</a> ·
-<a href="https://praiadigital.github.io/simulador-credito/">Simulador de Crédito</a> ·
-<a href="https://praiadigital.github.io/area-anfitriao/">Área do Anfitrião</a> ·
-<a href="https://praiadigital.github.io/guia-litoral/">Guia do Litoral</a> ·
-<a href="https://praiadigital.github.io/blog-litoral/">Blog</a> ·
-<a href="https://praiadigital.github.io/hermes-agents/">Hermes Agents</a> ·
-<a href="https://praiadigital.github.io/investidores/">Investidores</a>
-</nav>
 </body>
 </html>
