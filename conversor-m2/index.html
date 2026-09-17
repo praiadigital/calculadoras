@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversor de Preço por m² — Praia Digital</title>
+<meta name="description" content="Converta entre preço total e preço por m² instantaneamente, com referência do litoral paulista.">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
+  body{background:#f0f9ff;color:#0f172a;min-height:100vh}
+  header{background:linear-gradient(135deg,#0077B6,#00B4D8);color:#fff;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+  header a{color:#fff;text-decoration:none;font-weight:700}.logo{font-size:1.2rem}
+  main{max-width:640px;margin:2rem auto;padding:0 1rem}
+  .card{background:#fff;border-radius:16px;padding:1.75rem;box-shadow:0 4px 24px rgba(0,60,100,.08)}
+  h1{font-size:1.5rem;color:#0077B6}.sub{color:#64748b;margin:.3rem 0 1.2rem;font-size:.95rem}
+  label{display:block;font-weight:600;font-size:.85rem;margin:.9rem 0 .3rem}
+  input{width:100%;padding:.7rem;border:1px solid #cbd5e1;border-radius:10px;font-size:1rem}
+  .swap{text-align:center;margin:1rem 0;color:#0077B6;font-weight:800;cursor:pointer;font-size:1.4rem}
+  .res{margin-top:1.2rem;background:#ecfeff;border:1px solid #67e8f9;border-radius:12px;padding:1.25rem;text-align:center;display:none}
+  .res b{font-size:1.7rem;color:#0369a1}
+  .ref{margin-top:1rem;font-size:.82rem;color:#64748b;text-align:center}
+  .dica{margin-top:1.2rem;background:#ecfeff;border:1px solid #67e8f9;border-radius:12px;padding:1rem;font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="https://praia.digital/">🏖️ Praia Digital</a>
+  <a href="https://praia.digital/calculadoras">← Calculadoras</a>
+</header>
+<main>
+  <div class="card">
+    <h1>📐 Conversor de Preço por m²</h1>
+    <p class="sub">Total → por m², ou por m² → total. Simples assim.</p>
+    <label>Área (m²)</label>
+    <input type="number" id="area" value="70" oninput="calc()">
+    <label>Preço total (R$)</label>
+    <input type="number" id="total" value="450000" oninput="modo='t';calc()">
+    <div class="swap" onclick="trocar()">⇅ inverter direção</div>
+    <label>Preço por m² (R$)</label>
+    <input type="number" id="m2" value="6429" oninput="modo='m';calc()">
+    <div class="res" id="res"></div>
+    <p class="ref">Referência litoral SP: R$ 4.200 (Peruíbe) a R$ 7.500/m² (Guarujá). Detalhes por bairro no <a href="https://praia.digital/avaliador-imoveis/comparador-bairros/" style="color:#0077B6">Comparador de Bairros</a>.</p>
+  </div>
+</main>
+<script>
+var modo='t';
+function fmt(n){return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0})}
+function calc(){
+  var a=parseFloat(document.getElementById('area').value)||0;
+  if(!a)return;
+  var r=document.getElementById('res');
+  if(modo==='t'){
+    var t=parseFloat(document.getElementById('total').value)||0;
+    var m=t/a;
+    document.getElementById('m2').value=Math.round(m);
+    r.innerHTML='<b>'+fmt(m)+'/m²</b><br><small>'+fmt(t)+' ÷ '+a+' m²</small>';
+  } else {
+    var m2=parseFloat(document.getElementById('m2').value)||0;
+    var tot=m2*a;
+    document.getElementById('total').value=Math.round(tot);
+    r.innerHTML='<b>'+fmt(tot)+'</b><br><small>'+fmt(m2)+'/m² × '+a+' m²</small>';
+  }
+  r.style.display='block';
+}
+function trocar(){modo=modo==='t'?'m':'t';calc();}
+calc();
+</script>
+</body>
+</html>
