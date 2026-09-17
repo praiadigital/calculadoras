@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financiamento vs Consórcio — Praia Digital</title>
+<meta name="description" content="Compare o custo total de financiar ou fazer consórcio para comprar seu imóvel no litoral.">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
+  body{background:#f0f9ff;color:#0f172a;min-height:100vh}
+  header{background:linear-gradient(135deg,#0077B6,#00B4D8);color:#fff;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+  header a{color:#fff;text-decoration:none;font-weight:700}.logo{font-size:1.2rem}
+  main{max-width:700px;margin:2rem auto;padding:0 1rem}
+  .card{background:#fff;border-radius:16px;padding:1.75rem;box-shadow:0 4px 24px rgba(0,60,100,.08)}
+  h1{font-size:1.5rem;color:#0077B6}.sub{color:#64748b;margin:.3rem 0 1.2rem;font-size:.95rem}
+  label{display:block;font-weight:600;font-size:.85rem;margin:.9rem 0 .3rem}
+  input{width:100%;padding:.7rem;border:1px solid #cbd5e1;border-radius:10px;font-size:1rem}
+  button{width:100%;margin-top:1.3rem;padding:.9rem;border:0;border-radius:12px;background:#0077B6;color:#fff;font-weight:800;font-size:1rem;cursor:pointer}
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.3rem}
+  @media(max-width:600px){.vs{grid-template-columns:1fr}}
+  .col{border-radius:14px;padding:1.1rem}
+  .col h3{font-size:1rem;margin-bottom:.6rem}
+  .a{background:#eff6ff;border:1px solid #93c5fd}.b{background:#f0fdf4;border:1px solid #86efac}
+  .linha{display:flex;justify-content:space-between;font-size:.88rem;padding:.3rem 0}
+  .big{font-size:1.3rem;font-weight:800;color:#0369a1}
+  #verdict{margin-top:1rem;background:#ecfeff;border:1px solid #67e8f9;border-radius:12px;padding:1rem;font-size:.95rem;display:none}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="https://praia.digital/">🏖️ Praia Digital</a>
+  <a href="https://praia.digital/calculadoras">← Calculadoras</a>
+</header>
+<main>
+  <div class="card">
+    <h1>🏦 vs 🤝 Financiamento ou Consórcio?</h1>
+    <p class="sub">O duelo decisivo: compare parcela, custo total e tempo para ter o imóvel.</p>
+    <label>Valor do imóvel (R$)</label><input type="number" id="valor" value="450000" step="50000">
+    <label>Entrada disponível (R$)</label><input type="number" id="entrada" value="90000" step="10000">
+    <label>Prazo desejado (anos)</label><input type="number" id="prazo" value="25">
+    <button onclick="cmp()">Comparar as duas opções</button>
+    <div class="vs" id="vs" style="display:none">
+      <div class="col a"><h3>🏦 Financiamento (Price)</h3>
+        <div class="linha"><span>Parcela</span><b id="fPar"></b></div>
+        <div class="linha"><span>Custo total</span><b id="fTot"></b></div>
+        <div class="linha"><span>Juros pagos</span><b id="fJur"></b></div>
+        <div class="linha"><span>Imóvel imediato</span><b>✅ Sim</b></div>
+      </div>
+      <div class="col b"><h3>🤝 Consórcio</h3>
+        <div class="linha"><span>Parcela</span><b id="cPar"></b></div>
+        <div class="linha"><span>Custo total</span><b id="cTot"></b></div>
+        <div class="linha"><span>Taxa adm.</span><b id="cAdm"></b></div>
+        <div class="linha"><span>Imóvel imediato</span><b>⏳ Só na contemplação</b></div>
+      </div>
+    </div>
+    <div id="verdict"></div>
+  </div>
+</main>
+<script>
+var fmt=function(n){return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0})};
+function cmp(){
+  var v=parseFloat(document.getElementById('valor').value)||0;
+  var e=parseFloat(document.getElementById('entrada').value)||0;
+  var anos=parseFloat(document.getElementById('prazo').value)||25;
+  var P=v-e, i=0.105/12, n=anos*12;
+  var fPar=P*i/(1-Math.pow(1+i,-n)), fTot=fPar*n+e;
+  var cTot=v*1.18+e*0, cPar=(v*1.18)/n;
+  document.getElementById('fPar').textContent=fmt(fPar)+'/mês';
+  document.getElementById('fTot').textContent=fmt(fTot);
+  document.getElementById('fJur').textContent=fmt(fPar*n-P);
+  document.getElementById('cPar').textContent=fmt(cPar)+'/mês';
+  document.getElementById('cTot').textContent=fmt(cTot);
+  document.getElementById('cAdm').textContent=fmt(v*0.18);
+  document.getElementById('vs').style.display='grid';
+  var diff=fTot-cTot;
+  document.getElementById('verdict').style.display='block';
+  document.getElementById('verdict').innerHTML='💡 O consórcio custa <b>'+fmt(diff)+' a menos</b> no total, mas você espera a contemplação. O financiamento entrega o imóvel hoje. Verifique sua elegibilidade no <a href="https://praia.digital/simulador-credito/elegibilidade/" style="color:#0077B6;font-weight:700">Verificador FGTS</a> e os custos extras na <a href="https://praia.digital/calculadora-custos" style="color:#0077B6;font-weight:700">Calculadora de Custos</a>.';
+}
+</script>
+</body>
+</html>
